@@ -1,4 +1,6 @@
 "use client";
+import { API_URL } from "@/lib/config";
+import { Suspense } from "react";
 
 import HeaderModern from "../components/layout/HeaderModern";
 import Footer from "../components/layout/Footer";
@@ -10,7 +12,7 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useSearchParams } from "next/navigation";
 
-export default function OccasionsPage() {
+function OccasionsContent() {
     const searchParams = useSearchParams();
     const [page, setPage] = useState(1);
     const [searchTerm, setSearchTerm] = useState("");
@@ -27,7 +29,7 @@ export default function OccasionsPage() {
         const fetchCars = async () => {
             try {
                 setLoading(true);
-                const res = await fetch('http://localhost:5000/api/cars?limit=1000&isNew=false');
+                const res = await fetch(`${API_URL}/api/cars?limit=1000&isNew=false`);
                 const data = await res.json();
                 setCars(data.cars || []);
                 setError("");
@@ -312,5 +314,13 @@ export default function OccasionsPage() {
 
             <Footer />
         </div>
+    );
+}
+
+export default function OccasionsPage() {
+    return (
+        <Suspense fallback={<div className="min-h-screen pt-32 text-center">Chargement...</div>}>
+            <OccasionsContent />
+        </Suspense>
     );
 }
