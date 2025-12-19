@@ -8,6 +8,7 @@ import {
     Calendar, User, TrendingUp
 } from "lucide-react";
 import ProtectedRoute from "../../components/ProtectedRoute";
+import { API_URL } from "@/lib/config";
 
 interface NewsItem {
     _id: string;
@@ -31,7 +32,7 @@ function AdminNewsContent() {
 
     const fetchNews = async () => {
         try {
-            const res = await fetch('http://localhost:5000/api/news');
+            const res = await fetch(`${API_URL}/api/news`);
             const data = await res.json();
             setNews(data.news || []);
         } catch (error) {
@@ -46,7 +47,7 @@ function AdminNewsContent() {
 
         try {
             const token = localStorage.getItem('token');
-            const res = await fetch(`http://localhost:5000/api/news/${id}`, {
+            const res = await fetch(`${API_URL}/api/news/${id}`, {
                 method: 'DELETE',
                 headers: { 'Authorization': `Bearer ${token}` }
             });

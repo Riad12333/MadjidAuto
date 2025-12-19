@@ -5,6 +5,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { ChevronLeft, User, Mail, Phone, MapPin, Save, Shield } from "lucide-react";
 import ProtectedRoute from "../../components/ProtectedRoute";
+import { API_URL } from "@/lib/config";
 
 function AdminSettingsContent() {
     const [loading, setLoading] = useState(false);
@@ -20,7 +21,7 @@ function AdminSettingsContent() {
         const fetchProfile = async () => {
             const token = localStorage.getItem('token');
             try {
-                const res = await fetch('http://localhost:5000/api/users/profile', {
+                const res = await fetch(`${API_URL}/api/users/profile`, {
                     headers: { 'Authorization': `Bearer ${token}` }
                 });
                 const data = await res.json();
@@ -46,7 +47,7 @@ function AdminSettingsContent() {
 
         const token = localStorage.getItem('token');
         try {
-            const res = await fetch('http://localhost:5000/api/users/profile', {
+            const res = await fetch(`${API_URL}/api/users/profile`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',

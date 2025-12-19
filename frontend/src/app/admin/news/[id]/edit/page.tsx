@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { ChevronLeft, Newspaper, Save, Image as ImageIcon, FileText, Tag, AlignLeft } from "lucide-react";
+import { API_URL } from "@/lib/config";
 
 export default function EditNewsPage({ params }: { params: Promise<{ id: string }> }) {
     const { id } = use(params);
@@ -37,7 +38,7 @@ export default function EditNewsPage({ params }: { params: Promise<{ id: string 
             // Temporary workaround assuming I can fix backend in next step:
             try {
                 // Assuming I will add GET /api/news/id/:id
-                const res = await fetch(`http://localhost:5000/api/news/id/${id}`);
+                const res = await fetch(`${API_URL}/api/news/id/${id}`);
                 const data = await res.json();
                 if (res.ok) {
                     setForm({
@@ -67,7 +68,7 @@ export default function EditNewsPage({ params }: { params: Promise<{ id: string 
 
         const token = localStorage.getItem('token');
         try {
-            const res = await fetch(`http://localhost:5000/api/news/${id}`, {
+            const res = await fetch(`${API_URL}/api/news/${id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',

@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { ChevronLeft, Newspaper, Save, Image as ImageIcon, FileText, Tag, AlignLeft } from "lucide-react";
+import { API_URL } from "@/lib/config";
 
 export default function NewNewsPage() {
     const router = useRouter();
@@ -25,7 +26,7 @@ export default function NewNewsPage() {
 
         const token = localStorage.getItem('token');
         try {
-            const res = await fetch('http://localhost:5000/api/news', {
+            const res = await fetch(`${API_URL}/api/news`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

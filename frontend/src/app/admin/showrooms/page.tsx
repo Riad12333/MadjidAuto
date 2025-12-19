@@ -8,6 +8,7 @@ import {
     MoreVertical, Trash2, Eye, Car
 } from "lucide-react";
 import ProtectedRoute from "../../components/ProtectedRoute";
+import { API_URL } from "@/lib/config";
 
 interface Showroom {
     _id: string;
@@ -31,7 +32,7 @@ function AdminShowroomsContent() {
 
     const fetchShowrooms = async () => {
         try {
-            const res = await fetch('http://localhost:5000/api/showrooms');
+            const res = await fetch(`${API_URL}/api/showrooms`);
             const data = await res.json();
             setShowrooms(data || []);
         } catch (error) {
@@ -46,7 +47,7 @@ function AdminShowroomsContent() {
 
         try {
             const token = localStorage.getItem('token');
-            const res = await fetch(`http://localhost:5000/api/showrooms/${id}`, {
+            const res = await fetch(`${API_URL}/api/showrooms/${id}`, {
                 method: 'DELETE',
                 headers: { 'Authorization': `Bearer ${token}` }
             });

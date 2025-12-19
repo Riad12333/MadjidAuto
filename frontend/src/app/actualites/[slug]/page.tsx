@@ -8,6 +8,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Calendar, User, Eye, ArrowLeft, Share2, Facebook, Twitter, Linkedin } from "lucide-react";
 import { motion } from "framer-motion";
+import { API_URL } from "@/lib/config";
 
 interface Article {
     _id: string;
@@ -41,7 +42,7 @@ export default function ArticlePage() {
 
             try {
                 setLoading(true);
-                const res = await fetch(`http://localhost:5000/api/news/slug/${decodedSlug}`);
+                const res = await fetch(`${API_URL}/api/news/slug/${decodedSlug}`);
 
                 if (!res.ok) {
                     console.error("Fetch failed with status:", res.status);

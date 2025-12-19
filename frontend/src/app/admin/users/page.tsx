@@ -8,6 +8,7 @@ import {
     Mail, Phone, MapPin, Calendar, MoreVertical, Trash2, Eye
 } from "lucide-react";
 import ProtectedRoute from "../../components/ProtectedRoute";
+import { API_URL } from "@/lib/config";
 
 interface User {
     _id: string;
@@ -32,7 +33,7 @@ function AdminUsersContent() {
     const fetchUsers = async () => {
         try {
             const token = localStorage.getItem('token');
-            const res = await fetch('http://localhost:5000/api/users', {
+            const res = await fetch(`${API_URL}/api/users`, {
                 headers: { 'Authorization': `Bearer ${token}` }
             });
             if (res.ok) {
@@ -53,7 +54,7 @@ function AdminUsersContent() {
 
         try {
             const token = localStorage.getItem('token');
-            const res = await fetch(`http://localhost:5000/api/users/${id}`, {
+            const res = await fetch(`${API_URL}/api/users/${id}`, {
                 method: 'DELETE',
                 headers: { 'Authorization': `Bearer ${token}` }
             });

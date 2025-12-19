@@ -8,6 +8,7 @@ import { CATEGORIES, CATEGORY_COLORS } from "@/lib/data";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { API_URL } from "@/lib/config";
 
 import { useState, useEffect } from "react";
 
@@ -33,7 +34,7 @@ export default function ActualitesPage() {
         const fetchNews = async () => {
             try {
                 setLoading(true);
-                const res = await fetch('http://localhost:5000/api/news?limit=100');
+                const res = await fetch(`${API_URL}/api/news?limit=100`);
                 const data = await res.json();
                 setNews(data.news || []);
                 setError("");

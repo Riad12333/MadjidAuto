@@ -9,6 +9,7 @@ import {
     Search, Bell, Menu, X, BarChart3, ArrowUpRight, ArrowDownRight
 } from "lucide-react";
 import ProtectedRoute from "../components/ProtectedRoute";
+import { API_URL } from "@/lib/config";
 
 interface Stats {
     totalCars: number;
@@ -45,10 +46,10 @@ function AdminDashboardContent() {
             }
 
             const [carsRes, newsRes, showroomsRes, usersRes] = await Promise.all([
-                fetch('http://localhost:5000/api/cars?limit=100'),
-                fetch('http://localhost:5000/api/news'),
-                fetch('http://localhost:5000/api/showrooms'),
-                fetch('http://localhost:5000/api/users', { headers })
+                fetch(`${API_URL}/api/cars?limit=100`),
+                fetch(`${API_URL}/api/news`),
+                fetch(`${API_URL}/api/showrooms`),
+                fetch(`${API_URL}/api/users`, { headers })
             ]);
 
             const carsData = await carsRes.json();

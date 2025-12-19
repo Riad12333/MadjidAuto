@@ -8,6 +8,7 @@ import {
     MoreVertical, CheckCircle, XCircle, Clock
 } from "lucide-react";
 import ProtectedRoute from "../../components/ProtectedRoute";
+import { API_URL } from "@/lib/config";
 
 interface CarItem {
     _id: string;
@@ -35,7 +36,7 @@ function AdminCarsContent() {
 
     const fetchCars = async () => {
         try {
-            const res = await fetch('http://localhost:5000/api/cars?limit=100');
+            const res = await fetch(`${API_URL}/api/cars?limit=100`);
             const data = await res.json();
             setCars(data.cars || []);
         } catch (error) {
@@ -50,7 +51,7 @@ function AdminCarsContent() {
 
         const token = localStorage.getItem('token');
         try {
-            await fetch(`http://localhost:5000/api/cars/${id}`, {
+            await fetch(`${API_URL}/api/cars/${id}`, {
                 method: 'DELETE',
                 headers: { 'Authorization': `Bearer ${token}` }
             });

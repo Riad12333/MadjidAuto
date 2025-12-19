@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { ChevronLeft } from "lucide-react";
 import CarForm from "../../../../components/shared/CarForm";
+import { API_URL } from "@/lib/config";
 
 export default function EditCarPage({ params }: { params: Promise<{ id: string }> }) {
     const { id } = use(params);
@@ -15,7 +16,7 @@ export default function EditCarPage({ params }: { params: Promise<{ id: string }
     useEffect(() => {
         const fetchCar = async () => {
             try {
-                const res = await fetch(`http://localhost:5000/api/cars/${id}`);
+                const res = await fetch(`${API_URL}/api/cars/${id}`);
                 if (!res.ok) throw new Error("Véhicule introuvable");
                 const data = await res.json();
                 setCar(data);
