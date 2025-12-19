@@ -12,7 +12,6 @@ import BrandsCarousel from "./components/home/BrandsCarousel";
 import PublishButton from "./components/home/PublishButton";
 import Link from "next/link";
 import Image from "next/image";
-import { motion } from "framer-motion";
 import { ArrowRight, Star, MapPin, Phone, ChevronRight } from "lucide-react";
 import { SHOWROOMS, NEWS, BRANDS, Car } from "@/lib/data";
 
