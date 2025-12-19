@@ -1,4 +1,5 @@
 "use client";
+import { API_URL } from "@/lib/config";
 
 import HeaderModern from "../components/layout/HeaderModern";
 import Footer from "../components/layout/Footer";
@@ -21,7 +22,7 @@ export default function ConcessionnairesPage() {
     useEffect(() => {
         const fetchShowrooms = async () => {
             try {
-                const res = await fetch('http://localhost:5000/api/showrooms');
+                const res = await fetch(`${API_URL}/api/showrooms`);
                 if (res.ok) {
                     const data = await res.json();
                     setShowrooms(data);
@@ -52,7 +53,7 @@ export default function ConcessionnairesPage() {
     const getImageUrl = (url: string) => {
         if (!url) return "";
         if (url.startsWith('http')) return url;
-        return `http://localhost:5000${url}`;
+        return `${API_URL}${url}`;
     };
 
     if (isLoading) return <div className="min-h-screen pt-32 text-center">Chargement...</div>;
