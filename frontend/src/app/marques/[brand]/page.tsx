@@ -16,7 +16,7 @@ export default function BrandPage({ params }: { params: Promise<{ brand: string 
     // Filtrer les voitures par marque (simulation)
     // Dans un vrai cas, on filtrerait CARS.filter(c => c.brand.toLowerCase() === brand.toLowerCase())
     // Ici on affiche tout pour la démo si pas de match exact, ou on filtre si possible
-    const filteredCars = CARS.filter(c => c.brand.toUpperCase() === brandName);
+    const filteredCars = CARS.filter(c => c.brand && c.brand.toUpperCase() === brandName);
     const displayCars = filteredCars.length > 0 ? filteredCars : CARS.slice(0, 4); // Fallback pour la démo
 
     return (
