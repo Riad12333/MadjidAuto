@@ -15,8 +15,8 @@ export default function CarCard({ car }: CarCardProps) {
         >
             <div className="relative h-48">
                 <Image
-                    src={car.image}
-                    alt={`${car.brand} ${car.model}`}
+                    src={car.image || "https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=800"}
+                    alt={`${car.brand || car.marque} ${car.model || car.modele}`}
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-300"
                 />

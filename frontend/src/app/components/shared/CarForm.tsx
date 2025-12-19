@@ -1,4 +1,5 @@
 "use client";
+import { API_URL } from "@/lib/config";
 
 import { useState } from "react";
 import { CheckCircle } from "lucide-react";
@@ -56,7 +57,7 @@ export default function CarForm({ onSuccess, currentRole = 'USER', initialData }
         const formData = new FormData();
         formData.append('image', file);
 
-        const res = await fetch('http://localhost:5000/api/upload', {
+        const res = await fetch(`${API_URL}/api/upload`, {
             method: 'POST',
             body: formData
         });
@@ -64,7 +65,7 @@ export default function CarForm({ onSuccess, currentRole = 'USER', initialData }
         if (!res.ok) throw new Error('Upload failed');
         const data = await res.json();
         // Backend returns filePath like '/uploads/file.jpg', we need full URL
-        return `http://localhost:5000${data.filePath}`;
+        return `${API_URL}${data.filePath}`;
     };
 
     const handleSubmit = async (e: React.FormEvent) => {
@@ -96,8 +97,8 @@ export default function CarForm({ onSuccess, currentRole = 'USER', initialData }
             };
 
             const url = initialData
-                ? `http://localhost:5000/api/cars/${initialData._id}`
-                : 'http://localhost:5000/api/cars';
+                ? `${API_URL}/api/cars/${initialData._id}`
+                : `${API_URL}/api/cars`;
 
             const method = initialData ? 'PUT' : 'POST';
 

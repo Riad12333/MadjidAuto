@@ -1,4 +1,5 @@
 "use client";
+import { API_URL } from "@/lib/config";
 
 import HeaderModern from "../../components/layout/HeaderModern";
 import Footer from "../../components/layout/Footer";
@@ -17,7 +18,7 @@ export default function CarDetailPage({ params }: { params: Promise<{ id: string
     useEffect(() => {
         const fetchCar = async () => {
             try {
-                const res = await fetch(`http://localhost:5000/api/cars/${id}`);
+                const res = await fetch(`${API_URL}/api/cars/${id}`);
                 if (!res.ok) throw new Error("Véhicule non trouvé");
                 const data = await res.json();
                 setCar(data);
@@ -38,7 +39,7 @@ export default function CarDetailPage({ params }: { params: Promise<{ id: string
             if (!token) return;
 
             try {
-                const res = await fetch('http://localhost:5000/api/users/profile', {
+                const res = await fetch(`${API_URL}/api/users/profile`, {
                     headers: { 'Authorization': `Bearer ${token}` }
                 });
                 if (res.ok) {
@@ -63,7 +64,7 @@ export default function CarDetailPage({ params }: { params: Promise<{ id: string
 
         try {
             const method = isLiked ? 'DELETE' : 'POST';
-            const res = await fetch(`http://localhost:5000/api/users/favorites/${id}`, {
+            const res = await fetch(`${API_URL}/api/users/favorites/${id}`, {
                 method,
                 headers: { 'Authorization': `Bearer ${token}` }
             });
@@ -105,7 +106,7 @@ export default function CarDetailPage({ params }: { params: Promise<{ id: string
         if (url.startsWith('http')) return url;
         const normalizedUrl = url.replace(/\\/g, '/');
         const path = normalizedUrl.startsWith('/') ? normalizedUrl : `/${normalizedUrl}`;
-        return `http://localhost:5000${path}`;
+        return `${API_URL}${path}`;
     };
 
     // Images logic
