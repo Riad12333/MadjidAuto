@@ -8,6 +8,7 @@ import { User, Mail, Phone, MapPin, Car, Trash2, Edit, Heart } from "lucide-reac
 import CarForm from "../components/shared/CarForm";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
+import { API_URL } from "@/lib/config";
 
 export default function ProfilPage() {
     return (
@@ -42,7 +43,7 @@ function ProfilContent() {
             const token = localStorage.getItem('token');
             const headers = { 'Authorization': `Bearer ${token}` };
 
-            const resProfile = await fetch('http://localhost:5000/api/users/profile', { headers });
+            const resProfile = await fetch(`${API_URL}/api/users/profile`, { headers });
             if (resProfile.ok) {
                 const data = await resProfile.json();
                 setUser(data);
@@ -56,7 +57,7 @@ function ProfilContent() {
                 });
             }
 
-            const resCars = await fetch('http://localhost:5000/api/cars/myads', { headers });
+            const resCars = await fetch(`${API_URL}/api/cars/myads`, { headers });
             if (resCars.ok) {
                 const data = await resCars.json();
                 setMyCars(data);
@@ -85,7 +86,7 @@ function ProfilContent() {
 
         try {
             const token = localStorage.getItem('token');
-            await fetch(`http://localhost:5000/api/cars/${id}`, {
+            await fetch(`${API_URL}/api/cars/${id}`, {
                 method: 'DELETE',
                 headers: { 'Authorization': `Bearer ${token}` }
             });
@@ -98,7 +99,7 @@ function ProfilContent() {
     const handleRemoveFavorite = async (carId: string) => {
         try {
             const token = localStorage.getItem('token');
-            const res = await fetch(`http://localhost:5000/api/users/favorites/${carId}`, {
+            const res = await fetch(`${API_URL}/api/users/favorites/${carId}`, {
                 method: 'DELETE',
                 headers: { 'Authorization': `Bearer ${token}` }
             });
@@ -114,7 +115,7 @@ function ProfilContent() {
         e.preventDefault();
         try {
             const token = localStorage.getItem('token');
-            const res = await fetch('http://localhost:5000/api/users/profile', {
+            const res = await fetch(`${API_URL}/api/users/profile`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',

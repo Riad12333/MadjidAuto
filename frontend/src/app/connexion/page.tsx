@@ -4,6 +4,7 @@ import HeaderModern from "../components/layout/HeaderModern";
 import Footer from "../components/layout/Footer";
 import Link from "next/link";
 import { User, Lock, ArrowRight } from "lucide-react";
+import { API_URL } from "@/lib/config";
 
 export default function ConnexionPage() {
     return (
@@ -24,7 +25,7 @@ export default function ConnexionPage() {
                             const password = (e.target as any).password.value;
 
                             try {
-                                const res = await fetch('http://localhost:5000/api/users/login', {
+                                const res = await fetch(`${API_URL}/api/users/login`, {
                                     method: 'POST',
                                     headers: { 'Content-Type': 'application/json' },
                                     body: JSON.stringify({ email, password })
