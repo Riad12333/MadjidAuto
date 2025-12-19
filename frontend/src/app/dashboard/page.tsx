@@ -6,6 +6,7 @@ import Footer from "../components/layout/Footer";
 import ProtectedRoute from "../components/ProtectedRoute";
 import { User, MapPin, Phone, Car, Plus, Settings, Save, AlertCircle } from "lucide-react";
 import CarForm from "../components/shared/CarForm";
+import { API_URL } from "@/lib/config";
 
 export default function DashboardPage() {
     return (
@@ -39,7 +40,7 @@ function DashboardContent() {
         if (!confirm("Êtes-vous sûr de vouloir supprimer cette annonce ?")) return;
         try {
             const token = localStorage.getItem('token');
-            const res = await fetch(`http://localhost:5000/api/cars/${id}`, {
+            const res = await fetch(`${API_URL}/api/cars/${id}`, {
                 method: 'DELETE',
                 headers: { 'Authorization': `Bearer ${token}` }
             });
@@ -64,7 +65,7 @@ function DashboardContent() {
             const headers = { 'Authorization': `Bearer ${token}` };
 
             // Fetch Showroom Data
-            const resShowroom = await fetch('http://localhost:5000/api/showrooms/mine', { headers });
+            const resShowroom = await fetch(`${API_URL}/api/showrooms/mine`, { headers });
             if (resShowroom.ok) {
                 const data = await resShowroom.json();
                 setShowroom(data);
@@ -83,7 +84,7 @@ function DashboardContent() {
             }
 
             // Fetch Cars
-            const resCars = await fetch('http://localhost:5000/api/cars/myads', { headers });
+            const resCars = await fetch(`${API_URL}/api/cars/myads`, { headers });
             if (resCars.ok) {
                 const data = await resCars.json();
                 setCars(data);
@@ -101,7 +102,7 @@ function DashboardContent() {
         const method = showroom ? 'PUT' : 'POST';
 
         try {
-            const res = await fetch('http://localhost:5000/api/showrooms', {
+            const res = await fetch(`${API_URL}/api/showrooms`, {
                 method,
                 headers: {
                     'Content-Type': 'application/json',
@@ -133,7 +134,7 @@ function DashboardContent() {
         uploadData.append('image', file);
 
         try {
-            const res = await fetch('http://localhost:5000/api/upload', {
+            const res = await fetch(`${API_URL}/api/upload`, {
                 method: 'POST',
                 body: uploadData,
             });
@@ -254,7 +255,7 @@ function DashboardContent() {
                                             <div key={car._id} className="border border-gray-100 rounded-xl overflow-hidden hover:shadow-md transition-shadow">
                                                 <div className="h-40 bg-gray-200 relative">
                                                     {car.images?.[0] && (
-                                                        <img src={car.images[0].startsWith('http') ? car.images[0] : `http://localhost:5000/${car.images[0].replace(/\\/g, '/').replace(/^\//, '')}`} alt={car.modele} className="w-full h-full object-cover" />
+                                                        <img src={car.images[0].startsWith('http') ? car.images[0] : `${API_URL}/${car.images[0].replace(/\\/g, '/').replace(/^\//, '')}`} alt={car.modele} className="w-full h-full object-cover" />
                                                     )}
                                                     <span className="absolute top-2 right-2 px-2 py-1 bg-white/90 rounded-md text-xs font-bold">
                                                         {car.isNew ? 'NEUF' : 'OCCASION'}
@@ -363,7 +364,7 @@ function DashboardContent() {
                                             <label className="block text-sm font-bold text-gray-700 mb-2">Logo</label>
                                             <div className="flex items-center gap-4">
                                                 {formData.logo && (
-                                                    <img src={formData.logo.startsWith('http') ? formData.logo : `http://localhost:5000${formData.logo}`} alt="Logo" className="w-16 h-16 rounded-full object-cover border" />
+                                                    <img src={formData.logo.startsWith('http') ? formData.logo : `${API_URL}${formData.logo}`} alt="Logo" className="w-16 h-16 rounded-full object-cover border" />
                                                 )}
                                                 <input
                                                     type="file"
@@ -377,7 +378,7 @@ function DashboardContent() {
                                             <label className="block text-sm font-bold text-gray-700 mb-2">Image de Couverture</label>
                                             <div className="flex flex-col gap-4">
                                                 {formData.coverImage && (
-                                                    <img src={formData.coverImage.startsWith('http') ? formData.coverImage : `http://localhost:5000${formData.coverImage}`} alt="Cover" className="w-full h-32 object-cover rounded-xl border" />
+                                                    <img src={formData.coverImage.startsWith('http') ? formData.coverImage : `${API_URL}${formData.coverImage}`} alt="Cover" className="w-full h-32 object-cover rounded-xl border" />
                                                 )}
                                                 <input
                                                     type="file"

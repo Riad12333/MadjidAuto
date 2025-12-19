@@ -6,6 +6,7 @@ import Link from "next/link";
 import HeaderModern from "../../components/layout/HeaderModern";
 import Footer from "../../components/layout/Footer";
 import { MapPin, Phone, Mail, Clock, ShieldCheck, Car } from "lucide-react";
+import { API_URL } from "@/lib/config";
 
 export default function ShowroomDetailPage() {
     const params = useParams();
@@ -15,7 +16,7 @@ export default function ShowroomDetailPage() {
 
     useEffect(() => {
         if (params.id) {
-            fetch(`http://localhost:5000/api/showrooms/${params.id}`)
+            fetch(`${API_URL}/api/showrooms/${params.id}`)
                 .then(res => res.json())
                 .then(data => setShowroom(data))
                 .catch(err => console.error(err))
@@ -39,7 +40,7 @@ export default function ShowroomDetailPage() {
         if (url.startsWith('http')) return url;
         const normalizedUrl = url.replace(/\\/g, '/');
         const path = normalizedUrl.startsWith('/') ? normalizedUrl : `/${normalizedUrl}`;
-        return `http://localhost:5000${path}`;
+        return `${API_URL}${path}`;
     };
 
     return (
