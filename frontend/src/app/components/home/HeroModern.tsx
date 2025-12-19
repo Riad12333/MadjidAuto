@@ -1,4 +1,5 @@
 "use client";
+import { API_URL } from "@/lib/config";
 
 import { motion, AnimatePresence } from "framer-motion";
 import { Search, ArrowRight, Play, Gauge, Fuel } from "lucide-react";
@@ -19,14 +20,14 @@ export default function HeroModern() {
         if (url.startsWith('http')) return url;
         const normalizedUrl = url.replace(/\\/g, '/');
         const path = normalizedUrl.startsWith('/') ? normalizedUrl : `/${normalizedUrl}`;
-        return `http://127.0.0.1:5000${path}`;
+        return `${API_URL}${path}`;
     };
 
     useEffect(() => {
         setIsMounted(true);
         const fetchStats = async () => {
             try {
-                const res = await fetch('http://127.0.0.1:5000/api/stats/public');
+                const res = await fetch(`${API_URL}/api/stats/public`);
                 if (res.ok) {
                     const data = await res.json();
                     setStats(data);
@@ -42,7 +43,7 @@ export default function HeroModern() {
         const fetchSuggestions = async () => {
             if (searchTerm.length > 2) {
                 try {
-                    const res = await fetch(`http://127.0.0.1:5000/api/cars/suggestions?q=${encodeURIComponent(searchTerm)}`);
+                    const res = await fetch(`${API_URL}/api/cars/suggestions?q=${encodeURIComponent(searchTerm)}`);
                     if (res.ok) {
                         const data = await res.json();
                         setSuggestions(data);

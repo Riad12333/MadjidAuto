@@ -1,4 +1,5 @@
 // Server Component
+import { API_URL } from "@/lib/config";
 
 import HeaderModern from "./components/layout/HeaderModern";
 import Footer from "./components/layout/Footer";
@@ -17,7 +18,7 @@ import { SHOWROOMS, NEWS, BRANDS, Car } from "@/lib/data";
 // FETCH DATA FROM BACKEND
 async function getCars(): Promise<Car[]> {
   try {
-    const res = await fetch("http://127.0.0.1:5000/api/cars?limit=100&isNew=false", {
+    const res = await fetch(`${API_URL}/api/cars?limit=100&isNew=false`, {
       cache: "no-store",
     });
 
@@ -36,7 +37,7 @@ async function getCars(): Promise<Car[]> {
 // FETCH SHOWROOMS
 async function getShowrooms(): Promise<any[]> {
   try {
-    const res = await fetch("http://127.0.0.1:5000/api/showrooms", {
+    const res = await fetch(`${API_URL}/api/showrooms`, {
       cache: "no-store",
     });
     if (!res.ok) throw new Error("Failed");
@@ -50,7 +51,7 @@ async function getShowrooms(): Promise<any[]> {
 // FETCH NEWS
 async function getNews(): Promise<any[]> {
   try {
-    const res = await fetch("http://127.0.0.1:5000/api/news?limit=5", {
+    const res = await fetch(`${API_URL}/api/news?limit=5`, {
       cache: "no-store",
     });
     if (!res.ok) throw new Error("Failed to fetch news");
@@ -113,13 +114,13 @@ export default async function Home() {
                   <div className="relative h-48 bg-gray-200 overflow-hidden">
                     {showroom.coverImage ? (
                       <img
-                        src={showroom.coverImage.startsWith('http') ? showroom.coverImage : `http://localhost:5000${showroom.coverImage}`}
+                        src={showroom.coverImage.startsWith('http') ? showroom.coverImage : `${API_URL}${showroom.coverImage}`}
                         alt={showroom.nom}
                         className="w-full h-full object-cover"
                       />
                     ) : showroom.logo ? (
                       <img
-                        src={showroom.logo.startsWith('http') ? showroom.logo : `http://localhost:5000${showroom.logo}`}
+                        src={showroom.logo.startsWith('http') ? showroom.logo : `${API_URL}${showroom.logo}`}
                         alt={showroom.nom}
                         className="w-full h-full object-cover"
                       />

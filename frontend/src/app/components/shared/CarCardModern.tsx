@@ -1,4 +1,5 @@
 "use client";
+import { API_URL } from "@/lib/config";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -36,7 +37,7 @@ export default function CarCardModern({ car }: CarCardModernProps) {
         const normalizedUrl = url.replace(/\\/g, '/');
         // Ensure leading slash if not present
         const path = normalizedUrl.startsWith('/') ? normalizedUrl : `/${normalizedUrl}`;
-        return `http://localhost:5000${path}`;
+        return `${API_URL}${path}`;
     };
 
     const imageUrl = getImageUrl(rawImageUrl);
