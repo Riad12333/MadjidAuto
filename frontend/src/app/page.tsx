@@ -1,4 +1,5 @@
 // Server Component
+export const dynamic = "force-dynamic";
 import { API_URL } from "@/lib/config";
 
 import HeaderModern from "./components/layout/HeaderModern";
