@@ -1,0 +1,23 @@
+{
+  "devFiles": [],
+  "ampDevFiles": [],
+  "polyfillFiles": [],
+  "lowPriorityFiles": [],
+  "rootMainFiles": [],
+  "pages": {
+    "/_error": [
+      "static/chunks/905ac_next_dist_compiled_2871a8cd._.js",
+      "static/chunks/905ac_next_dist_shared_lib_00482c5d._.js",
+      "static/chunks/905ac_next_dist_client_8c3982c2._.js",
+      "static/chunks/905ac_next_dist_296c07eb._.js",
+      "static/chunks/905ac_next_error_330cfc79.js",
+      "static/chunks/[next]_entry_page-loader_ts_3f5045aa._.js",
+      "static/chunks/905ac_react-dom_e84659d4._.js",
+      "static/chunks/905ac_cb87b2d6._.js",
+      "static/chunks/[root-of-the-server]__9d7b13c0._.js",
+      "static/chunks/Desktop_madjidauto_pages__error_2da965e7._.js",
+      "static/chunks/turbopack-Desktop_madjidauto_pages__error_dfc2afb5._.js"
+    ]
+  },
+  "ampFirstPages": []
+}

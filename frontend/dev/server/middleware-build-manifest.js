@@ -1,0 +1,51 @@
+globalThis.__BUILD_MANIFEST = {
+  "pages": {
+    "/_app": [
+      "static/chunks/905ac_next_dist_compiled_2871a8cd._.js",
+      "static/chunks/905ac_next_dist_shared_lib_5e3c8e9e._.js",
+      "static/chunks/905ac_next_dist_client_8c3982c2._.js",
+      "static/chunks/905ac_next_dist_3340cca2._.js",
+      "static/chunks/905ac_next_app_7b9c8636.js",
+      "static/chunks/[next]_entry_page-loader_ts_319118d2._.js",
+      "static/chunks/905ac_react-dom_e84659d4._.js",
+      "static/chunks/905ac_cb87b2d6._.js",
+      "static/chunks/[root-of-the-server]__6701d7cb._.js",
+      "static/chunks/Desktop_madjidauto_pages__app_2da965e7._.js",
+      "static/chunks/turbopack-Desktop_madjidauto_pages__app_1f402569._.js"
+    ],
+    "/_error": [
+      "static/chunks/905ac_next_dist_compiled_2871a8cd._.js",
+      "static/chunks/905ac_next_dist_shared_lib_00482c5d._.js",
+      "static/chunks/905ac_next_dist_client_8c3982c2._.js",
+      "static/chunks/905ac_next_dist_296c07eb._.js",
+      "static/chunks/905ac_next_error_330cfc79.js",
+      "static/chunks/[next]_entry_page-loader_ts_3f5045aa._.js",
+      "static/chunks/905ac_react-dom_e84659d4._.js",
+      "static/chunks/905ac_cb87b2d6._.js",
+      "static/chunks/[root-of-the-server]__9d7b13c0._.js",
+      "static/chunks/Desktop_madjidauto_pages__error_2da965e7._.js",
+      "static/chunks/turbopack-Desktop_madjidauto_pages__error_dfc2afb5._.js"
+    ]
+  },
+  "devFiles": [],
+  "polyfillFiles": [
+    "static/chunks/905ac_next_dist_build_polyfills_polyfill-nomodule.js"
+  ],
+  "lowPriorityFiles": [],
+  "rootMainFiles": [
+    "static/chunks/[turbopack]_browser_dev_hmr-client_hmr-client_ts_27869d8b._.js",
+    "static/chunks/905ac_next_dist_compiled_react-dom_29893fb8._.js",
+    "static/chunks/905ac_next_dist_compiled_react-server-dom-turbopack_1488a832._.js",
+    "static/chunks/905ac_next_dist_compiled_next-devtools_index_e2ece537.js",
+    "static/chunks/905ac_next_dist_compiled_6120f9ca._.js",
+    "static/chunks/905ac_next_dist_client_ec93e02d._.js",
+    "static/chunks/905ac_next_dist_f4850bf3._.js",
+    "static/chunks/905ac_@swc_helpers_cjs_ce76ee8a._.js",
+    "static/chunks/Desktop_madjidauto_a0ff3932._.js",
+    "static/chunks/turbopack-Desktop_madjidauto_8fc41ae1._.js"
+  ]
+};
+globalThis.__BUILD_MANIFEST.lowPriorityFiles = [
+"/static/" + process.env.__NEXT_BUILD_ID + "/_buildManifest.js",
+"/static/" + process.env.__NEXT_BUILD_ID + "/_ssgManifest.js"
+];
